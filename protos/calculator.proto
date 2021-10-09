@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package calculator;
+
+service Calculator {
+  rpc sum(Input) returns (Output) {};
+  rpc minus(Input) returns (Output) {};
+}
+
+message Input {
+  float first_value = 1;
+  float second_value = 2;
+}
+
+message Output {
+  float value = 1;
+}

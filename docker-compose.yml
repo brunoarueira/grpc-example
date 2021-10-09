@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+  grpc-server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - '8080:8080'
+  grpc-client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    environment:
+      - SERVER_URL=grpc-server:8080
+    volumes:
+      - ./client:/app
+    depends_on:
+      - grpc-server
